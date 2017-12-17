@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Search</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ search.id }}</td>
+            </tr>
+            <tr>
+                <th>Query</th>
+                <td>{{ search.query }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('Google_index') }}">Search History</a>
+        </li>
+        <li>
+      {#      <a href="{{ path('Google_edit', { 'id': search.id }) }}">Edit</a>  #}
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

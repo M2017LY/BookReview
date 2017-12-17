@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Search edit</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('Google_index') }}">Search History</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    {% for query in query.items %}
+
+        <article>
+
+            {% if query.volumeInfo.imageLinks.thumbnail is defined  %}
+            <img src="{{ query.volumeInfo.imageLinks.thumbnail}}"/>
+            {% endif %}
+            <h2>{{ query.volumeInfo.title }}</h2>
+            {% if query.volumeInfo.description is defined %}
+                  {{ query.volumeInfo.description }}
+                <strong> {{ query.volumeInfo.publishedDate }}</strong><br/>
+                <b>{{ query.volumeInfo.authors | join }}</b>
+            {% endif %}
+
+
+        </article>
+
+    {% endfor %}
+
+
+
+{% endblock %}

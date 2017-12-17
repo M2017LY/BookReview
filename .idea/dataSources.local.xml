@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - book_review@localhost" uuid="8c47d107-53b1-4ee6-adb1-28a651437a34">
+      <database-info product="MySQL" version="5.7.16-0ubuntu0.16.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <introspection-schemas>*:book_review|book_review:</introspection-schemas>
+      <resolve-scope>book_review:</resolve-scope>
+      <unqualified-resolve-schemas>book_review:</unqualified-resolve-schemas>
+    </data-source>
+    <data-source name="MySQL - sjp885_review@helios.csesalford.com" uuid="c56023b5-fdaf-45f6-90f2-7dbcb1ba0af3">
+      <database-info product="MySQL" version="5.7.17-0ubuntu0.16.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <user-name>sjp885</user-name>
+      <introspection-schemas>*:sjp885_review|sjp885_review:</introspection-schemas>
+      <resolve-scope>sjp885_review:</resolve-scope>
+      <unqualified-resolve-schemas>sjp885_review:</unqualified-resolve-schemas>
+    </data-source>
+  </component>
+</project>

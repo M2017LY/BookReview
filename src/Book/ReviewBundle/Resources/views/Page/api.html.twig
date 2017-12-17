@@ -1,0 +1,21 @@
+{# src/Book/ReviewBundle/Resources/views/Page/index.html.twig #}
+{% extends "BookReviewBundle::layout.html.twig" %}
+{% block body %}
+    Books API v1:
+
+    <li>API for all Books use this:<a href="{{ path('api_book_get_books') }}"> (http://127.0.0.1:8000/api/v1/books)</a></li>
+
+
+
+    <table border = 2 width = "90%">
+        <tr> <th> name </th> <th> method </th> <th> path </th>< </tr>
+        <tr> <td> api_book_get_books </td> <td> GET </td> <td> /api/v1/books.{_format} </td>< </tr>
+        <tr> <td> api_book_get_book </td> <td> GET </td> <td>  /api/v1/books/{id}.{_format} </td>< </tr>
+        <tr> <td>  api_book_post_book </td> <td> POST </td> <td>  /api/v1/books.{_format} </td>< </tr>
+        <tr> <td>  api_book_delete_book </td> <td> DELETE </td> <td> /api/v1/books/{id}.{_format} </td>< </tr>
+        <tr> <td>  api_book_put_books  </td> <td> PUT </td> <td>  /api/v1/books/{id}.{_format} </td>< </tr>
+    </table>
+
+
+    <b>Last updated January 20, 2017.</b>
+{% endblock %}

@@ -1,0 +1,24 @@
+Google_index:
+    path:     /search
+    defaults: { _controller: "BookGoogleBooksApiBundle:Search:index" }
+    methods:  GET
+
+Google_show:
+    path:     /search/{id}/show
+    defaults: { _controller: "BookGoogleBooksApiBundle:Search:show" }
+    methods:  GET
+
+Google_new:
+    path:     /search/new
+    defaults: { _controller: "BookGoogleBooksApiBundle:Search:new" }
+    methods:  [GET, POST]
+
+Google_edit:
+    path:     /search/{id}/serchresult
+    defaults: { _controller: "BookGoogleBooksApiBundle:Search:edit" }
+    methods:  [GET, POST]
+
+Google_delete:
+    path:     /search/{id}/delete
+    defaults: { _controller: "BookGoogleBooksApiBundle:Search:delete" }
+    methods:  DELETE

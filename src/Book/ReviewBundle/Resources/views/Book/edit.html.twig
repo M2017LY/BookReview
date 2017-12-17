@@ -1,0 +1,30 @@
+{% extends "BookReviewBundle::layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block title %}Edit Book details{% endblock %}
+
+{% block body %}
+<h1>Editing:<i> {{ book.title }}</i></h1>
+
+    {% if book.covers is null  %}
+        {% set pic =  'cover.png' %}
+    {% else %}
+        {% set pic = book.covers  %}
+    {% endif  %}
+
+    <img src="{{ asset(pic) }}" alt="Book Cover not available"  title="{{ book.title }}" width="200" height="250" border="0"/>
+    {{ form(form) }}
+    <li>
+        <a href="{{ path('upload_book_cover',{'id':book.id}) }}">upload Book Cover</a>                            {% set pic =  'cover.png' %}
+    </li>
+    <li>
+            <p><a href="{{ path('book_show',{id : book.id}) }} ">cancel</a></p>
+        </li>
+
+        <li>
+            <p><a href="{{ path('book_delete',{id: book.id}) }} ">delete</a></p>
+        </li>
+{% endblock %}
+
+
+
+

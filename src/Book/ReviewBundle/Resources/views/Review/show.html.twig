@@ -1,0 +1,15 @@
+{% extends 'BookReviewBundle::layout.html.twig' %}
+{% block body %}
+    <p><small>
+            <i> {{ review.review }} </i>
+        </small>
+    </p>
+        <a href="{{ path('review_edit',{'id':review.id}) }} ">edit</a>
+    <li>
+        <a href="{{ path('book_index') }}">Back to the list</a>
+    </li>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,11 @@
+book_google_books_api_Google:
+    resource: "@BookGoogleBooksApiBundle/Resources/config/routing/search.yml"
+    prefix:   /Google
+
+
+book_google_books_api_index:
+    path:     /googlePhpBooks
+    defaults: { _controller: BookGoogleBooksApiBundle:GoogleApi:index }
+    requirements:
+          _method : GET
+

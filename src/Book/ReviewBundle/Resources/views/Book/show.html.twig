@@ -1,0 +1,97 @@
+{% extends 'BookReviewBundle::layout.html.twig' %}
+
+{% block body %}
+    <h3><i>Category:{{ book.category }} </i></h3>
+
+    {% if book.covers is null  %}
+        {% set pic =  'cover.png' %}
+        {% else %}
+        {% set pic = book.covers  %}
+    {% endif  %}
+
+    <img src="{{ asset(pic) }}" alt="Book Cover not available"  title="{{ book.title }}" width="200" height="250" border="0"/>
+
+          {# to calculat the average rate for this book #}
+
+    {% set sum = 0 %}
+    {% set rate = 0 %}
+        {% for review in book.reviews %}
+            {% if review.rate.id is defined %}
+                {% set sum = sum + review.rate.id %}
+            {% endif %}
+            {% set rate = (sum/ book.reviews|length)|round %}
+        {% endfor %}
+    <div>
+        {% if rate == 0 %}
+            {% for i in 1.. 5 %}
+                <span> &#9734 </span>
+            {% endfor %}
+        {% elseif rate == 5%}
+            {% for i in 1.. rate %}
+                <span> &#9733 </span>
+            {% endfor %}
+        {% else %}
+            {% for i in 1..rate %}
+                <span> &#9733 </span>
+            {% endfor %}
+            {% for i in 1..((5)-(rate)) %}
+                <span> &#9734 </span>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <b>
+        <a href="{{ path('review_create',{'id':book.id}) }}">add review</a>
+    </b>
+
+    <h2>{{ book.title }} </h2>
+    <p>{{ book.summary|nl2br }} </p>
+    by (author):<i> {{ book.author }} </i>
+            {% if (app.user and app.user.username == book.user) or is_granted('ROLE_ADMIN')%}
+                    <li>
+                        <a href="{{ path('book_edit',{'id':book.id}) }} ">edit</a>
+                    </li>
+            {% endif %}
+            <li>
+               <a href="{{ path('book_index') }}">Back to the list</a>
+            </li>
+{% endblock %}
+{% block sidebar %}
+    <h3>Reviews:</h3>
+    {% for review in book.reviews %}
+        {{ review.review }}
+
+         <div>
+           {% if review.rate.id is not defined %}
+                {% for i in 1.. 5 %}
+                    <span> &#9734 </span>
+                {% endfor %}
+            {% elseif review.rate.id == 5%}
+                {% for i in 1.. review.rate.id %}
+                    <span> &#9733 </span>
+                {% endfor %}
+            {% else %}
+                {% for i in 1..review.rate.id %}
+                    <span> &#9733 </span>
+                {% endfor %}
+                {% for i in 1..((5)-(review.rate.id)) %}
+                    <span> &#9734 </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <small>
+            <p>
+            by :<i> {{ review.user }} </i>
+                added on:<i>{% if review.timestamp %}{{ review.timestamp|date('Y-m-d') }}{% endif %}</i>
+            </p>
+            {% if (app.user and app.user.username == review.user) or is_granted('ROLE_ADMIN')%}
+                <p><a href="{{ path('review_edit',{id: review.id}) }} ">edit</a></p>
+                <p><a href="{{ path('review_delete',{id: review.id}) }} ">delete</a></p>
+            {% endif%}
+        </small>
+    {% endfor %}
+{% endblock %}
+
+
+
+

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <ul>
+        <li>
+            <a href="{{ path('Google_new') }}">Create a new search</a>
+        </li>
+    </ul>
+    <h1>Searches list</h1>
+
+    <table>
+        <thead>
+            <tr>
+
+                <th>Query</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for search in searches %}
+            <tr>
+                <td>{{ search.query }}</td>
+                <td>
+                    <ul>
+                         <li>
+                            <a href="{{ path('Google_edit', { 'id': search.id }) }}">Show Search Result</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

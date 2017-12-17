@@ -1,0 +1,22 @@
+{% extends 'BookReviewBundle::layout.html.twig' %}
+
+{% block sidebar %}
+    {% for review in book.reviews %}
+        {{ review.review }}
+        <small>
+            <p>
+                by :<i> {{ review.user }} </i>
+                added on:<i>{% if review.timestamp %}{{ review.timestamp|date('Y-m-d') }}{% endif %}</i>
+            </p>
+
+            {% if (app.user and app.user.username == review.user) or is_granted('ROLE_ADMIN')%}
+                <p><a href="{{ path('review_edit',{id: review.id}) }} ">edit</a></p>
+                <p><a href="{{ path('review_delete',{id: review.id}) }} ">delete</a></p>
+            {% endif%}
+        </small>
+    {% endfor %}
+{% endblock %}
+
+
+
+

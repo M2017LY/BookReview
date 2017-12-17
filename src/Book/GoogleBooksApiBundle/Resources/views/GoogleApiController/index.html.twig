@@ -1,0 +1,26 @@
+{% extends 'BookGoogleBooksApiBundle::layout.html.twig' %}
+
+ {% block title %} Google Books{% endblock%}
+ {% block body %}
+     <header>
+         <h1>PHP books</h1>
+     </header>
+     <br>
+
+    {% for item in rawData.items %}
+        <div>
+            <article>
+                <h2>{{ item.volumeInfo.title }}</h2>
+                <img src="{{ item.volumeInfo.imageLinks.thumbnail}}"/>
+                <h2>{{ item.volumeInfo.publisher }}</h2>
+                {% if item.volumeInfo.description is defined %}
+                    {{ item.volumeInfo.description }}
+                {% endif %}
+                <strong> {{ item.volumeInfo.publishedDate }}</strong><br/>
+                By:<b>{{ item.volumeInfo.authors | join }}</b>
+             </article>
+         </div>
+    {% endfor %}
+
+ {% endblock %}
+

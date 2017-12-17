@@ -1,0 +1,37 @@
+{% extends 'BookReviewBundle::layout.html.twig' %}
+
+{% block title %}{{ category.category}}{% endblock %}
+
+{% block body %}
+    {{ category.category}} Books:<br/>
+    {% for book in category.books%}
+        {% if book.covers is null  %}
+            {% set pic =  'cover.png' %}
+        {% else %}
+            {% set pic = book.covers  %}
+        {% endif  %}
+        <img src="{{ asset(pic) }}" alt="Book Cover not available"  title="{{ book.title }}" width="190" height="220" border="0"/>
+
+        <li>
+             <a href="{{ path('book_show',{id : book.id}) }} ">
+                {{ book.title | title }} </a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+    <h1>{{ category.category }} </h1>
+    {# the user has to have admin role to be able to edit category #}
+    {% if is_granted('ROLE_ADMIN') %}
+        <li>
+            <a href="{{ path('category_edit',{'id':category.id}) }} ">edit</a>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_USER')%}
+        <li>
+            <a href="{{ path('book_create') }}">Add Book</a>
+        </li>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{# src/Book/ReviewBundle/Resources/views/Book/index.html.twig
+{% extends "BookReviewBundle::layout.html.twig" %}
+
+{% block body %}
+    {% for book in books %}
+
+        {% set pic = book.pic  %}
+        {% if book.pic == null  %}
+            {% set pic = 'cover.png'  %}
+        {% endif  %}
+
+
+        {% set pic = book.pic  %}
+        {% if book.pic == null  %}
+            {% set pic = 'cover.png'  %}
+        {% endif  %}
+        <img src="{{ asset(pic) }}" alt="Book Cover not available"  title="{{ book.title }}" width="200" height="250" border="0"/>
+
+        <h2><a href="{{ path('book_show',{id : book.id}) }} ">
+                    {{ book.title | title }} </a></h2>
+            <p>{{ book.summary | nl2br }} </p>
+            <p><small>
+                    by (author):<i> {{ book.author }} </i>
+                    added on:<i>{% if book.timestamp %}{{ book.timestamp|date('Y-m-d') }}{% endif %}</i>
+                </small>
+              </p>
+    {% endfor %}
+{% endblock %}
+
+
+
+
+ #}

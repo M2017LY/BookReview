@@ -1,0 +1,14 @@
+{% extends 'BookReviewBundle::layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block sidebar %}
+    <h1>Review edit</h1>
+    {{ form(form) }}
+    <ul>
+        <li>
+            <a href="{{ path('book_index') }}">Back </a>
+        </li>
+        <li>
+            <p><a href="{{ path('review_delete',{id: review.id}) }}">delete</a></p>
+        </li>
+    </ul>
+{% endblock %}

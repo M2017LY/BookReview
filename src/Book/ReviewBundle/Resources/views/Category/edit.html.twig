@@ -1,0 +1,18 @@
+{% extends "BookReviewBundle::layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block title %}Editing Category{% endblock %}
+
+{% block body %}
+ <h1>Category edit</h1>
+
+   {{ form(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('category_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <p><a href="{{ path('category_delete',{id: category.id}) }} ">delete</a></p>
+        </li>
+    </ul>
+{% endblock %}

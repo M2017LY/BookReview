@@ -1,0 +1,4 @@
+services:
+#    book_review.example:
+#        class: Book\ReviewBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

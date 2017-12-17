@@ -1,0 +1,107 @@
+
+index:
+    path:     /
+    defaults: { _controller: BookReviewBundle:Page:index }
+
+about:
+    path:     /about
+    defaults: { _controller: BookReviewBundle:Page:about }
+    requirements:
+        _method : GET
+
+api:
+    path:     /api
+    defaults: { _controller: BookReviewBundle:Page:api }
+    requirements:
+        _method : GET
+
+
+book_index:
+    path:     /index/book
+    defaults: { _controller: BookReviewBundle:Page:index }
+    requirements:
+
+book_create:
+    path:     /create/book
+    defaults: { _controller: BookReviewBundle:Book:create }
+    requirements:
+
+book_show:
+    path:     /show/{id}/book
+    defaults: { _controller: BookReviewBundle:Book:show }
+    requirements:
+          id: \d+
+
+book_edit:
+    path:     /edit/{id}/book
+    defaults: { _controller: BookReviewBundle:Book:edit }
+    requirements:
+          id: \d+
+
+book_delete:
+    path:     /delete/{id}/book
+    defaults: { _controller: BookReviewBundle:Book:delete }
+    requirements:
+          id: \d+
+
+
+review_index:
+    path:     /index/review
+    defaults: { _controller: BookReviewBundle:Review:index}
+    requirements:
+
+review_create:
+    path:     /create/review/{id}
+    defaults: { _controller: BookReviewBundle:Review:create }
+    requirements:
+        _method : POST
+
+review_show:
+    path:     /show/{id}/review
+    defaults: { _controller: BookReviewBundle:Review:show }
+    requirements:
+          id: \d+
+
+review_edit:
+    path:     /edit/{id}/review
+    defaults: { _controller: BookReviewBundle:Review:edit }
+    requirements:
+          id: \d+
+
+review_delete:
+    path:     /delete/{id}/review
+    defaults: { _controller: BookReviewBundle:Review:delete }
+    requirements:
+          id: \d+
+
+category_index:
+    path:     /category/index
+    defaults: { _controller: BookReviewBundle:Category:index }
+    requirements:
+
+category_create:
+    path:     /category/create
+    defaults: { _controller: BookReviewBundle:Category:create }
+    requirements:
+
+category_show:
+    path:     /category/show/{id}
+    defaults: { _controller: BookReviewBundle:Category:show }
+    requirements:
+          id: \d+
+
+category_edit:
+    path:     /category/edit/{id}
+    defaults: { _controller: BookReviewBundle:Category:edit }
+    requirements:
+          id: \d+
+
+category_delete:
+    path:     /category/delete/{id}
+    defaults: { _controller: BookReviewBundle:Category:delete }
+    requirements:
+          id: \d+
+
+upload_book_cover:
+    path:     /uploadBookCover/{id}
+    defaults: { _controller: BookReviewBundle:Cover:uploadBookCover }

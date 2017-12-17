@@ -1,0 +1,65 @@
+{# src/Book/ReviewBundle/Resources/views/Page/index.html.twig #}
+{% extends "BookReviewBundle::layout.html.twig" %}
+
+{% block body %}
+    {% for book in books %}
+        <br/>
+        <br/>
+        <article>
+
+            {% if book.covers is null  %}
+                {% set pic =  'cover.png' %}
+            {% else %}
+                {% set pic = book.covers  %}
+            {% endif  %}
+
+            <img src="{{ asset(pic) }}" alt="Book Cover not available"  title="{{ book.title }}" width="200" height="250" border="0"/>
+
+
+            {# to calculat the average rate for this book #}
+                 {% set sum = 0 %}
+                 {% set rate = 0 %}
+
+                 {% for review in book.reviews %}
+                     {% if review.rate.id is defined %}
+                         {% set sum = sum + review.rate.id %}
+                     {% endif %}
+
+                     {% set rate = (sum/ book.reviews|length)|round %}
+                 {% endfor %}
+
+                 <div>
+                     {% if rate == 0 %}
+                         {% for i in 1.. 5 %}
+                             <span> &#9734 </span>
+                         {% endfor %}
+                     {% elseif rate == 5%}
+                         {% for i in 1.. rate %}
+                             <span> &#9733 </span>
+                         {% endfor %}
+                     {% else %}
+                         {% for i in 1..rate %}
+                             <span> &#9733 </span>
+                         {% endfor %}
+                         {% for i in 1..((5)-(rate)) %}
+                             <span> &#9734 </span>
+                         {% endfor %}
+                     {% endif %}
+                 </div>
+
+            <h2><a href="{{ path('book_show',{id : book.id}) }} ">
+                    {{ book.title | title }} </a></h2>
+
+            <p><small>
+                    by (author):<b> {{ book.author }} </b>
+            <p>{{ book.summary | nl2br }} </p>
+                    added on:<i>{% if book.timestamp %}{{ book.timestamp|date('Y-m-d') }}{% endif %}</i>
+               </small></b>
+                     </article>
+    {% endfor %}
+
+{% endblock %}
+
+
+
+

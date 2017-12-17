@@ -1,0 +1,15 @@
+{% extends "BookReviewBundle::layout.html.twig" %}
+
+{% block sidebar %}
+    {% for category in categories %}
+            <li>
+            <h2><a href="{{ path('category_show',{id : category.id}) }} ">
+                    {{ category.category }} </a></h2>
+            </li>
+    {% endfor %}
+{% endblock %}
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <li><a href="{{ path('category_create') }}">Add Category</a></li>
+    {% endif %}
+{% endblock %}

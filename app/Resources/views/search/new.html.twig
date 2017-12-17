@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Search creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Search" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('Google_index') }}">Search History</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block sidebar %}
+
+    <li><a href="{{ path('book_google_books_api_index') }}">Php books</a></li>
+
+{% endblock %}
+
+

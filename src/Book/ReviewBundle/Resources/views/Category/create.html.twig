@@ -1,0 +1,24 @@
+{% extends 'BookReviewBundle::layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block title %}Adding a new Category{% endblock %}
+
+{% block body %}
+    <h1>Adding a new category</h1>
+
+     {{ form(form) }}
+
+{% endblock %}
+
+{% block sidebar %}
+    <h1>{{ category.category }} </h1>
+    <ul>
+        <li>
+            <a href="{{ path('category_index') }}">Show all categories</a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}BookReviewBundle:Cover:uploadBookCover{% endblock %}
+
+{% block body %}
+
+    <h1>Upload Book Cover</h1>
+
+    {{ form_start(form) }}
+      {{ form_row(form.cover) }}
+    {{ form_end(form) }}
+
+{% endblock %}
